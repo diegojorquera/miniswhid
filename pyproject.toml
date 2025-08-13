@@ -1,0 +1,79 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "miniswhid"
+version = "0.1.0"
+description = "No-frills SWHID computation for files and directories"
+authors = [{name="Diego Jorquera"}]
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["swhid", "software-heritage", "hash", "identifier"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Archiving",
+    "Topic :: Utilities",
+]
+
+[project.urls]
+Homepage = "https://github.com/diegojorquera/miniswhid"
+Repository = "https://github.com/diegojorquera/miniswhid"
+Issues = "https://github.com/diegojorquera/miniswhid/issues"
+
+[project.scripts]
+miniswhid = "miniswhid.cli:main"
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.3.0",
+    "pytest>=8.4.1",
+    "pytest-cov>=6.2.1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["miniswhid"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "UP", # pyupgrade
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+python_version = "3.10"
+check_untyped_defs = true
+disallow_any_unimported = true
+disallow_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unused_ignores = true
+warn_unreachable = true
+strict = true
+pretty = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
