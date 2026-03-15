@@ -15,7 +15,7 @@ from .miniswhid import (
     compute_directory_swhid,
 )
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "Diego Jorquera"
 
 __all__ = [
